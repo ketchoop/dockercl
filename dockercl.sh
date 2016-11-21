@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 
 echo ''
 echo '                        ##         . '
@@ -21,4 +21,5 @@ echo ""
 
 while IFS="" read -r -e -p $'\e[94mdocker> \e[0m' command; do
     docker $command; 
+    history -s $command;
 done
