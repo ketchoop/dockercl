@@ -19,7 +19,8 @@ echo " | |__| | (_) | (__|   <  __/ | | (__| |"
 echo " |_____/ \___/ \___|_|\_\___|_|  \___|_|"
 echo ""
 
-while IFS="" read -r -e -p $'\e[94mdocker> \e[0m' command; do
+while IFS="" read -r -e -p $'\e[94mdocker> \e[0m' command
+do
     docker $command; 
     history -s $command;
 done
