@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./perms.sh $1
+
 echo ''
 echo '                        ##         . '
 echo '                  ## ## ##        == '
@@ -23,6 +25,11 @@ bind -u complete 2> /dev/null
 
 while IFS="" read -r -e -p $'\e[94mdocker> \e[0m' command
 do
-    docker $command; 
+    if (is_in_perm_list $command $whitelist) && ! (is_in_perm_list $command $blacklist)
+    then
+        docker $command; 
+    else
+        echo "Command is not allowed"
+    fi
     history -s $command;
 done
