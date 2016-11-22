@@ -11,9 +11,14 @@ function is_in_perm_list() {
     shift
     local arr=$@
 
+    if [ ${arr[0]} = "\/" ]
+    then
+        return 0
+    fi
+
     for i in ${arr[@]}
     do
-        if echo $comm | grep -wq $i
+        if (echo $comm | grep -wq $i)
         then
             return 0
         fi    
