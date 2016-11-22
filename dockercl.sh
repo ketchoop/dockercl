@@ -29,7 +29,7 @@ do
     then
         docker $command; 
     else
-        echo "Command is not allowed"
+        echo -e "\033[0;91mCommand is not allowed\033[0m"
     fi
     history -s $command;
 done
