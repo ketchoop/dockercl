@@ -2,6 +2,8 @@
 declare -a whitelist
 declare -a blacklist
 
+perms_file=$1
+
 IFS=', '
 
 function is_in_perm_list() {
@@ -20,7 +22,7 @@ function is_in_perm_list() {
     return 1
 }
 
-whitelist=$(grep "white-list:" perms | sed -ne 's/white-list:\(.*\)/\1/p')
+whitelist=$(grep "white-list:" $perms_file | sed -ne 's/white-list:\(.*\)/\1/p')
 
-blacklist=$(grep "black-list:" perms | sed -ne 's/black-list:\(.*\)/\1/p')
+blacklist=$(grep "black-list:" $perms_file | sed -ne 's/black-list:\(.*\)/\1/p')
 
