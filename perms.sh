@@ -9,9 +9,10 @@ IFS=', '
 function is_in_perm_list() {
     local comm=$1
     shift
-    local arr=$@
+    local arr=($@)
+    echo $arr
 
-    if [ ${arr[0]} = "\/" ]
+    if [ $arr = "\/" ]
     then
         return 0
     fi
@@ -21,7 +22,7 @@ function is_in_perm_list() {
         if (echo $comm | grep -wq $i)
         then
             return 0
-        fi    
+        fi
     done
 
     return 1
