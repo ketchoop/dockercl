@@ -19,7 +19,7 @@ function is_in_perm_list() {
 
     for i in ${arr[@]}
     do
-        if (echo $comm | grep -wq $i)
+        if (echo $comm | grep -wq "^\s*$i")
         then
             return 0
         fi
